@@ -1,5 +1,8 @@
-import { useState } from 'react'
 import data from '../data.json'
+import svg1 from './assets/icon-memory.svg'
+import svg2 from './assets/icon-reaction.svg'
+import svg3 from './assets/icon-verbal.svg'
+import svg4 from './assets/icon-visual.svg'
 import './App.css'
 
 function App() {
@@ -9,6 +12,7 @@ function App() {
     s += d.score
   })
   s = Math.floor(s/4)
+
 
   return (
     <div className="App">
@@ -30,9 +34,10 @@ function App() {
           <p className="title">Summary</p>
           <div className='test-container'>
           {data.map(d=>{
+            let category = d.category.toLowerCase()
             return (
               <div id={d.category} className='test'>
-                <img className='icon' src={d.icon} alt="icon" />
+                <img className='icon' src={category == "memory" ? svg1 : category == "reaction" ? svg2 : category == "verbal" ? svg3 : svg4} alt="icon" />
                 <p className='category'>{d.category}</p>
                 <p className='ratio'><b>{d.score}</b> &nbsp;/ 100</p>
               </div>
